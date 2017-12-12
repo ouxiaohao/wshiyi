@@ -8,3 +8,4 @@ Homestead.yaml
 .env
 /public/runtime.php.
 storage/
+pwd
