@@ -25,7 +25,7 @@ header > div {
 header > div div.menu {
   width: 68%;
   float: left;
-  font-family: '微软雅黑';
+  font-family: 'Microsoft YaHei';
   font-size: 0.2rem;
 }
 header > div div.menu nav {
@@ -269,12 +269,24 @@ footer {
   height: 0.6rem;
   text-align: center;
   margin-top: 0.2rem;
-  font-family: '微软雅黑';
+  font-family: 'Microsoft YaHei';
 }
 footer p {
   height: 0.3rem;
   line-height: 0.3rem;
   margin-bottom: 0;
+}
+footer p a {
+  color: #636b6f;
+  text-decoration: none;
+}
+footer p a:visited {
+  color: #636b6f;
+  text-decoration: none;
+}
+footer p a:hover {
+  color: #636b6f;
+  text-decoration: none;
 }
 .icon {
   width: 1em;

@@ -23,7 +23,7 @@ header{
         div.menu{
             width: 68%;
             float: left;
-            font-family: '微软雅黑';
+            font-family: 'Microsoft YaHei';
             font-size: 0.2rem;
             nav{
                 background: none;
@@ -285,11 +285,23 @@ footer{
     height: 0.6rem;
     text-align: center;
     margin-top: 0.2rem;
-    font-family: '微软雅黑';
+    font-family: 'Microsoft YaHei';
     p{
         height: 0.3rem;
         line-height: 0.3rem;
         margin-bottom: 0;
+        a{
+            color: #636b6f;
+            text-decoration: none;
+            &:visited{
+                color: #636b6f;
+                text-decoration: none;
+            }
+            &:hover{
+                color: #636b6f;
+                text-decoration: none;
+            }
+        }
     }
 }
 // 网络字体
@@ -299,6 +311,10 @@ footer{
    fill: currentColor;
    overflow: hidden;
 }
+
+
+
+
 //响应式
 @media only screen and (max-width: 800px){
     header{
