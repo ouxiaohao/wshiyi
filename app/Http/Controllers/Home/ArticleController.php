@@ -15,6 +15,7 @@ use App\Models\ArticleTag;
 use App\Models\Category;
 use App\Models\Data;
 use App\Models\Tag;
+use YuanChao\Editor\EndaEditor;
 
 class ArticleController extends Controller
 {
@@ -36,6 +37,7 @@ class ArticleController extends Controller
             )
             ->first()
             ->toArray();
+        $article['content'] = EndaEditor::MarkDecode($article['content']);
         $article['tag'] = ArticleTag::join('tag','article_tag.tag_id','=','tag.id')
             ->where('article_id',$id)
             ->pluck('name','id')
