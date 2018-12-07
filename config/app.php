@@ -163,6 +163,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         YuanChao\Editor\EndaEditorServiceProvider::class,
+        JellyBool\Flysystem\Upyun\UpyunServiceProvider::class,
 
         /*
          * Package Service Providers...

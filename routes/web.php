@@ -19,7 +19,7 @@ Route::get('admin', 'Admin\IndexController@index');
 //搜索
 Route::post('search','Home\IndexController@search');
 //访问首页
-//Route::get('/{param?}', 'Home\IndexController@index');
+Route::get('/{param?}', 'Home\IndexController@index');
 
 //文章
 Route::get('article/index', 'Admin\ArticleController@index');

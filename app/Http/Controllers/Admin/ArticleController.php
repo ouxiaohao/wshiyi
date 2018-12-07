@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Data;
 use App\Models\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ArticleController extends AdminBaseController
 {
@@ -47,14 +48,8 @@ class ArticleController extends AdminBaseController
      */
     public function addData(Request $request)
     {
-//        获取文件
-        $thumb = $request->file('Article.thumb');
-//        获取文件扩展名
-        $extension = $thumb->extension();
-//        拼接文件名
-        $fileName = 'ouhao_'. date('ymdhis'). '.' .$extension;
-//        保存文件
-        $path = $thumb->storeAs('thumb',$fileName);
+//        上传缩略图
+        $path = Storage::disk('upyun')->put('/thumb',$request->file('Article.thumb'));
 //        获取文章模型的请求数据
         $articleData = $request->input('Article');
 //        添加文件路径到数组
@@ -124,15 +119,7 @@ class ArticleController extends AdminBaseController
         $article = $request->input('Article');
 //        把文件追加到数据
         if ($request->hasFile('Article.thumb')) {
-//        获取文件
-            $thumb = $request->file('Article.thumb');
-//        获取文件扩展名
-            $extension = $thumb->extension();
-//        拼接文件名
-            $fileName = 'ouhao_'. date('ymdhis'). '.' .$extension;
-//        保存文件，返回路径
-            $path = $thumb->storeAs('thumb', $fileName);
-            $article['thumb'] = $path;
+            $article['thumb'] = Storage::disk('upyun')->put('/thumb',$request->file('Article.thumb'));
         }
         $res = Article::where('id',$id)->update($article);
         if (!$res) return back()->withInput();

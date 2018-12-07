@@ -27,7 +27,7 @@
                     </p>
                 </div>
                 <div class="detail">
-                    <div class="image"><img src="{{ asset('storage/'. $article->thumb) }}"></div>
+                    <div class="image"><img src="{{ FILE_HOST. $article->thumb }}"></div>
                     <div class="content">{{ $article->digest }}</div>
                     <div class="show">
                         <p>

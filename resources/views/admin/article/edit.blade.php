@@ -69,7 +69,7 @@
                     <input type="file" id="inputfile" name="Article[thumb]">
                 </div>
                 <div class="col-sm-10 pull-right" style="margin-top: 0.2rem;">
-                    <img src="{{ asset('storage/'. $article->thumb) }}" width="200" height="200">
+                    <img src="{{ FILE_HOST.$article->thumb }}" width="200" height="200">
                 </div>
             </div>
             <div class="form-group">
