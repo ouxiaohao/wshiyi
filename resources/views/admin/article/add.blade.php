@@ -28,7 +28,6 @@
                 <label class="col-sm-2 control-label">所属分类</label>
                 <div class="col-sm-10">
                     <select class="form-control" name="Article[cate_id]">
-                        <option value="0">顶级分类</option>
                         @foreach($category as $v)
                             <option value="{{ $v['id'] }}">{{ $v['_name'] }}</option>
                         @endforeach
