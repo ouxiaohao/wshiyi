@@ -28,6 +28,7 @@ Route::get('article/edit/{id}', 'Admin\ArticleController@edit');
 Route::get('article/del/{id}', 'Admin\ArticleController@del');
 Route::post('article/add_data', 'Admin\ArticleController@addData');
 Route::post('article/edit_data/{id}', 'Admin\ArticleController@editData');
+Route::post('md/upload_image', 'Admin\ArticleController@upload_image');
 //Route::any('article/upload_image', 'Admin\ArticleController@upload_image');
 //分类
 Route::get('category/index', 'Admin\CategoryController@index');

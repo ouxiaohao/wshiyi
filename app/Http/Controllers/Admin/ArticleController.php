@@ -14,7 +14,8 @@ class ArticleController extends AdminBaseController
 {
     public function index()
     {
-        $data = Article::get();
+        $data = Article::OrderBy('id','desc')
+            ->get();
 
         return view('admin.article.index',['data'=>$data]);
     }
@@ -149,40 +150,28 @@ class ArticleController extends AdminBaseController
     }
 
     /**
-     * 上传图片
-     * @param $path
+     * md上传图片
      * @return array
      */
-    public static function uploadImgFile($path){
+    public function upload_image(Request $request)
+    {
         try{
             // File Upload
-            if (Request::hasFile('image')){
-                $pic = Request::file('image');
-                if($pic->isValid()){
-                    $newName = md5(rand(1,1000).$pic->getClientOriginalName()).".".$pic->getClientOriginalExtension();
-                    $pic->move($path,$newName);
-                    $url = asset($path.'/'.$newName);
-                }else{
-                    self::addError('The file is invalid');
-                }
+            if ($request->hasFile('image')){
+                $path = Storage::disk('upyun')->put('/markdown',$request->file('image'));
+                $url = FILE_HOST. $path;
             }else{
 //                self::addError('Not File');
             }
         }catch (\Exception $e){
 //            self::addError($e->getMessage());
         }
-        $data = array(
+        $data = [
             'status'=>empty($message)?0:1,
             'message'=>'',
 //            'message'=>self::getLastError(),
             'url'=>!empty($url)?$url:''
-        );
-        return $data;
-    }
-
-    public function upload_image()
-    {
-        $data = self::uploadImgFile('thumb');
+        ];
 
         return json_encode($data);
     }
