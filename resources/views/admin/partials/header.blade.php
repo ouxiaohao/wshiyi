@@ -1,6 +1,6 @@
 <nav class="navbar navbar-default" role="navigation">
     <div class="navbar-header col-xs-2">
-        <a class="navbar-brand" href="{{ url('/') }}" target="_blank" style="padding-left: 0.3rem;">OuHao</a>
+        <a class="navbar-brand" href="{{ url('/') }}" target="_blank" style="padding-left: 0.3rem;">Wshiyi</a>
     </div>
     <div class="col-xs-8">
         <ul class="nav navbar-nav">
