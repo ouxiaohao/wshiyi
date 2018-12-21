@@ -51,7 +51,7 @@
                 </tr>
                 <tr>
                     <td>上次登录时间：</td>
-                    <td>2016-05-07 00:00:00</td>
+                    <td>{{ date('Y-m-d H:i:s',$data['last_login_time']) }}</td>
                 </tr>
                 <tr>
                     <td>项目开始时间：</td>
@@ -70,5 +70,5 @@
         </section>
     </div>
     <!-- 个性签名 -->
-    <div class="signature">{{ $signature }}</div>
+    <div class="signature">{{ $data['signature'] }}</div>
 @endsection

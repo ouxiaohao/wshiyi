@@ -81,7 +81,6 @@ class IndexController extends Controller
             ->pluck('name','id');
         }
 
-
         return view('home.index.index',[
             'categories' => $categories,
             'tags' => $tags,

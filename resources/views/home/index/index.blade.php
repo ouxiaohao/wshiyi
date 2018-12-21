@@ -1,8 +1,8 @@
 @extends('home.layout')
 
 @section('title','首页')
-@section('keywords','欧浩，博客，个人博客，laravel,laravel框架')
-@section('description','欧浩博客是欧浩基于laravel框架独立开发的个人博客')
+@section('keywords','未十一，博客，个人博客，laravel,laravel框架')
+@section('description','未十一博客是未十一基于laravel框架独立开发的个人技术博客')
 
 @section('article')
     @forelse($articles as $article)
