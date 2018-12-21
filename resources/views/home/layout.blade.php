@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>欧浩 - @yield('title')</title>
+    <title>未十一 | @yield('title')</title>
     <meta name="keywords" content="@yield('keywords')">
     <meta name="description" content="@yield('description')">
     @include('home.partials.head')
