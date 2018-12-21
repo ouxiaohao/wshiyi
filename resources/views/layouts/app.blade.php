@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>欧浩 - 管理台 - 登录</title>
+    <title>未十一 | 管理台 | 登录</title>
     <link rel="shutcut icon" href="{{ asset('img/logo.ico') }}">
 
     <!-- Styles -->
@@ -36,7 +36,7 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">OuHao</a>
+                    <a class="navbar-brand" href="{{ url('/') }}">Wshiyi</a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
