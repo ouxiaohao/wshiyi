@@ -21,7 +21,16 @@ Route::post('search','Home\IndexController@search');
 //访问首页
 Route::get('/{param?}', 'Home\IndexController@index');
 
-//文章
+
+/**
+ * 前端
+ **/
+//侧边栏
+Route::get('home/sidebar', 'Home\IndexController@sidebar');
+Route::get('home/article/index/{id}', 'Home\ArticleController@index');
+
+
+//后台文章
 Route::get('article/index', 'Admin\ArticleController@index');
 Route::get('article/add', 'Admin\ArticleController@add');
 Route::get('article/edit/{id}', 'Admin\ArticleController@edit');

@@ -27,8 +27,6 @@ class ArticleController extends Controller
             ->toArray();
 //        转化为树形结构
         $categories = Data::tree($categories,'name');
-//        获取标签模型
-        $tags = Tag::orderBy('sort')->get();
 //        获取文章模型
         $article = Article::join('category','article.cate_id','=','category.id')
             ->where('article.id',$id)
@@ -42,10 +40,11 @@ class ArticleController extends Controller
             ->where('article_id',$id)
             ->pluck('name','id')
             ->toArray();
+//        增加浏览量
+        Article::where('id',$id)->increment('browse');
 
         return view('home.article.index',[
             'categories' => $categories,
-            'tags' => $tags,
             'article' => $article,
         ]);
     }

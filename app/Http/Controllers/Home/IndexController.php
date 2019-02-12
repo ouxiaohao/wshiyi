@@ -39,11 +39,6 @@ class IndexController extends Controller
                 $whereName = 'tag_id';
                 $search = null;
                 break;
-            // 转整大于1000跳转到Article控制器
-            case (int)$param > 1000:
-                $article = new ArticleController();
-                return $article->index($param-1000);
-                break;
             //为字符串显示分类文章
             default:
                 $id = Category::where('title', $param)->value('id');
@@ -57,8 +52,7 @@ class IndexController extends Controller
             ->get()
             ->toArray();
         $categories = Data::tree($categories,'name');
-//        获取标签模型
-        $tags = Tag::orderBy('sort')->get();
+
 //        获取文章模型 (包括首页、分类、标签)
         $articles = Article::join('category','article.cate_id','=','category.id')
             ->join('article_tag','article.id','=','article_tag.article_id')
@@ -83,7 +77,6 @@ class IndexController extends Controller
 
         return view('home.index.index',[
             'categories' => $categories,
-            'tags' => $tags,
             'articles' => $articles,
         ]);
     }
@@ -106,6 +99,26 @@ class IndexController extends Controller
         }
         return back();
 
+    }
+
+    public function sidebar()
+    {
+//        标签
+        $tags = Tag::orderBy('sort')
+            ->select('id','name','color')
+            ->get();
+//        推荐文章
+        $hot_list = Article::orderBy('browse','desc')
+            ->select('id','title')
+            ->limit(9)
+            ->get();
+
+        $data = [
+            'tags'=>$tags,
+            'hot_list'=>$hot_list,
+        ];
+
+        echo json_encode($data);
     }
 
 

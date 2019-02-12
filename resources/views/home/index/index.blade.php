@@ -8,7 +8,7 @@
     @forelse($articles as $article)
         <section>
             <div class="section">
-                <div class="title"><a href="{{ url('/',['param'=>$article->id +1000]) }}">{{ $article->title }}</a>
+                <div class="title"><a href="{{ url('home/article/index').'/'. $article->id }}">{{ $article->title }}</a>
                 </div>
                 <div class="belong">
                     <p class="cate" title="分类">
@@ -34,7 +34,7 @@
                             <svg class="icon" aria-hidden="true">
                                 <use xlink:href="#icon-rili-copy-copy"></use>
                             </svg> {{ $article->updated_at }}</p>
-                        <a href="{{ url('/',['param'=>$article->id +1000]) }}">
+                        <a href="{{ url('home/article/index').'/'. $article->id }}">
                             <button class="btn btn-info btn-xs">查看全文>></button>
                         </a>
                     </div>
