@@ -29,12 +29,16 @@ class ArticleController extends Controller
         $categories = Data::tree($categories,'name');
 //        获取文章模型
         $article = Article::join('category','article.cate_id','=','category.id')
-            ->where('article.id',$id)
+            ->where([['article.id','=',$id],['article.release','=',1]])
             ->select('keywords','digest','article.title','updated_at','content',
                 'category.title as category_title','category.name as category_name'
             )
-            ->first()
-            ->toArray();
+            ->first();
+        if (empty($article)) {
+            return view('errors.503');
+        }
+        $article = $article->toArray();
+        
         $article['content'] = EndaEditor::MarkDecode($article['content']);
         $article['tag'] = ArticleTag::join('tag','article_tag.tag_id','=','tag.id')
             ->where('article_id',$id)
