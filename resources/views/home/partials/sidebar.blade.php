@@ -14,15 +14,15 @@
         <div class="hot">
             <a v-for="hot in todos.hot_list" :href="'{{ url('/home/article/index') }}/' + hot.id" class="list-group-item">@{{ hot.title }}</a>
         </div>
-        <div class="top">
-            <a href="#" class="list-group-item">
-                <svg class="icon font-tuijan" aria-hidden="true">
-                    <use xlink:href="#icon-paixingbang"></use>
-                </svg> 1的说法是否
-            </a>
-            <a href="#" class="list-group-item">24*7 支持</a>
-            <a href="#" class="list-group-item">免费 Window 空间托管</a>
-        </div>
+        {{--<div class="top">--}}
+            {{--<a href="#" class="list-group-item">--}}
+                {{--<svg class="icon font-tuijan" aria-hidden="true">--}}
+                    {{--<use xlink:href="#icon-paixingbang"></use>--}}
+                {{--</svg> 1的说法是否--}}
+            {{--</a>--}}
+            {{--<a href="#" class="list-group-item">24*7 支持</a>--}}
+            {{--<a href="#" class="list-group-item">免费 Window 空间托管</a>--}}
+        {{--</div>--}}
     </div>
 </aside>
 <script>
