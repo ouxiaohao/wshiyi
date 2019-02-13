@@ -1,12 +1,41 @@
 $(function(){
+    // 文章列表缩略图
     $('article section div.image').hover(function(){
         $(this).find('img').stop().animate({'height':'100%'},500);
         $(this).stop().animate({'padding':'0'},500);
     },function(){
         $(this).stop().animate({'padding':'0.05rem'},500);
         $(this).find('img').stop().animate({'height':'1.58rem'},500);
+    });
+
+    // sidebar定位
+    var aside = $('#aside');
+    var startTop = aside.offset().top;// aside到顶部的初始距离
+    var asideWidth = aside.width();
+
+    $(window).bind("scroll",function(){
+
+        var moveTop=$(this).scrollTop();//当前窗口的滚动距离
+
+        var fixedTop = 75;
+        if (moveTop<fixedTop) {
+            aside.css({
+                'position': 'static'
+            })
+        }else{
+            aside.css({
+                'position': 'fixed',
+                'top': startTop - fixedTop,
+                'width': asideWidth,
+                'margin-top':0
+            })
+        }
     })
-})
+
+
+
+
+});
 
 
 
