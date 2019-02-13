@@ -14,6 +14,9 @@
                                 <a href="{{ url('/',['param'=>$category['title']]) }}">{{ $category['_name'] }}</a>
                             </li>
                             @endforeach
+                            <li>
+                                <a href="https://github.com/wshiyi/wshiyi" target="_blank">源码</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
