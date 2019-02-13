@@ -67,7 +67,7 @@ class IndexController extends Controller
             ->select('article.id','article.title','article.digest','article.thumb','article.updated_at',
                 'category.title as category_title','category.name as category_name'
                 )
-            ->distinct()
+            ->groupBy('article.id')
             ->paginate(8);
 //        追加文章的标签
         foreach ($articles as $article) {
