@@ -16,6 +16,7 @@
                     <input type="checkbox" id="ids" onclick="checkAll(this);"><label for="ids">编号</label>
                 </th>
                 <th>标题</th>
+                <th>发布</th>
                 <th>更新时间</th>
                 <th>操作</th>
             </tr>
@@ -27,6 +28,7 @@
                         <input type="checkbox" id="" name="ids" value=""><label for="">{{ $v->id }}</label>
                     </td>
                     <td>{{ $v->title }}</td>
+                    <td>{{ $v->release==1 ? '是' : '否' }}</td>
                     <td>{{ date('Y-m-d',strtotime($v->created_at)) }}</td>
                     <td>
                         <a href="{{ url('article/edit', ['id'=>$v->id]) }}" class="btn btn-info">编辑</a>

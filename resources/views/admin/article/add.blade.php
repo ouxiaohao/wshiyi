@@ -70,6 +70,17 @@
                            placeholder="" name="Article[browse]">
                 </div>
             </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">是否发布</label>
+                <div class="col-sm-10">
+                    <label class="radio-inline">
+                        <input type="radio" name="Article[release]"  value="0" checked> 不发布
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="Article[release]"  value="1"> 发布
+                    </label>
+                </div>
+            </div>
             <div class="form-group submit-form">
                 <div class="submit-div">
                     <button type="submit" class="btn btn-info">提交</button>
