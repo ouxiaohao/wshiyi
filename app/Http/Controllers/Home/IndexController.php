@@ -110,6 +110,7 @@ class IndexController extends Controller
             ->get();
 //        推荐文章
         $hot_list = Article::orderBy('browse','desc')
+            ->where('release',1)
             ->select('id','title')
             ->limit(9)
             ->get();
