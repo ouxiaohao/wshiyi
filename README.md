@@ -2,7 +2,7 @@
 
 - linux + nginx + mysql5.7 + php7
 
-#### laravel
+#### Laravel
 - 5.3 版本
 
 ## 集成
