@@ -56,7 +56,7 @@ $(function(){
 var _hmt = _hmt || [];
 (function() {
     var hm = document.createElement("script");
-    hm.src = "https://hm.baidu.com/hm.js?b7e35726054a0a3babd1b4228b453b3b";
+    hm.src = "https://hm.baidu.com/hm.js?917d8aa23a16f6c3f29f0f072661b69e";
     var s = document.getElementsByTagName("script")[0];
     s.parentNode.insertBefore(hm, s);
 })();
