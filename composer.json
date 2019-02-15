@@ -8,7 +8,8 @@
         "php": ">=5.6.4",
         "laravel/framework": "5.3.*",
         "yuanchao/laravel-5-markdown-editor": "dev-master",
-        "jellybool/flysystem-upyun": "^1.0"
+        "jellybool/flysystem-upyun": "^1.0",
+        "hightman/xunsearch": "^1.4"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
