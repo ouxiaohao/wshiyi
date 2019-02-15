@@ -33,7 +33,7 @@
         </div>
         <div class="article-content">{!! $article['content'] !!}</div>
         <div class="sign">
-            <p class="updated">更新于 {{ date('Y-m-d H:i:s',$article['updated_at']) }}</p>
+            <p class="updated">发布于 {{ date('Y-m-d H:i:s',$article['created_at']) }}</p>
         </div>
     </div>
 @endsection

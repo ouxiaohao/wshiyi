@@ -56,7 +56,7 @@ class IndexController extends Controller
 //        获取文章模型 (包括首页、分类、标签)
         $articles = Article::join('category','article.cate_id','=','category.id')
             ->join('article_tag','article.id','=','article_tag.article_id')
-            ->orderBy('article.updated_at','desc')
+            ->orderBy('article.created_at','desc')
             ->where('article.release',1)
             ->when($id ,function ($query) use($id,$whereName){
                 return $query->where($whereName,$id);

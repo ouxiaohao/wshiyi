@@ -33,7 +33,7 @@
                         <p>
                             <svg class="icon" aria-hidden="true">
                                 <use xlink:href="#icon-rili-copy-copy"></use>
-                            </svg> {{ $article->updated_at }}</p>
+                            </svg> {{ $article->created_at }}</p>
                         <a href="{{ url('home/article/index').'/'. $article->id }}">
                             <button class="btn btn-info btn-xs">查看全文>></button>
                         </a>
