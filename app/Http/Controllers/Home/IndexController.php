@@ -64,7 +64,7 @@ class IndexController extends Controller
             ->when($search,function ($query) use($search){
                 return $query->where('article.title', 'like' ,"%{$search}%");
             })
-            ->select('article.id','article.title','article.digest','article.thumb','article.updated_at',
+            ->select('article.id','article.title','article.digest','article.thumb','article.created_at',
                 'category.title as category_title','category.name as category_name'
                 )
             ->groupBy('article.id')

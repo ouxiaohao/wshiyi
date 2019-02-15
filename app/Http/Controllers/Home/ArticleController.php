@@ -30,7 +30,7 @@ class ArticleController extends Controller
 //        获取文章模型
         $article = Article::join('category','article.cate_id','=','category.id')
             ->where([['article.id','=',$id],['article.release','=',1]])
-            ->select('keywords','digest','article.title','updated_at','content',
+            ->select('keywords','digest','article.title','created_at','content',
                 'category.title as category_title','category.name as category_name'
             )
             ->first();
