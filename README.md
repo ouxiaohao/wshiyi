@@ -10,6 +10,7 @@
 - Markdown
 - vue.js
 - xunsearch
+- Upyun
 
 
 author: ouhao@ouxiaohao.com

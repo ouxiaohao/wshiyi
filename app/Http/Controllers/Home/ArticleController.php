@@ -14,7 +14,6 @@ use App\Models\Article;
 use App\Models\ArticleTag;
 use App\Models\Category;
 use App\Models\Data;
-use App\Models\Tag;
 use YuanChao\Editor\EndaEditor;
 
 class ArticleController extends Controller
