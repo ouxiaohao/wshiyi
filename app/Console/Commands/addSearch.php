@@ -44,6 +44,7 @@ class addSearch extends Command
             ->select('id','title','keywords')
             ->get();
         $xs = new \XS('search');
+        print_r($xs->search->search('mac'));die;
         $index = $xs->index;
         $doc = new \XSDocument;
         foreach ($articles as $article) {
