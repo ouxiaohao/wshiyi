@@ -7,8 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Xunsearch extends Model
 {
 
-    protected $table = 'article';
-    public $timestamps = false;
     /**
      * 添加索引
      * @param $data
