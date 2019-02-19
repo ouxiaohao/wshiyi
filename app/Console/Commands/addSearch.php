@@ -3,7 +3,9 @@
 namespace App\Console\Commands;
 
 use App\Models\Article;
+use App\Models\Xunsearch;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\DB;
 
 class addSearch extends Command
 {
@@ -44,8 +46,9 @@ class addSearch extends Command
             ->select('id','title','keywords')
             ->get();
         $xs = new \XS('search');
-        print_r($xs->search->search('mac'));die;
         $index = $xs->index;
+        $m = Xunsearch::clean();
+        p($m);die;
         $doc = new \XSDocument;
         foreach ($articles as $article) {
 //            添加文档
