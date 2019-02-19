@@ -45,21 +45,16 @@ class addSearch extends Command
         $articles = Article::orderBy('id')
             ->select('id','title','keywords')
             ->get();
-        $xs = new \XS('search');
-        $index = $xs->index;
-        $m = Xunsearch::clean();
-        p($m);die;
-        $doc = new \XSDocument;
+//        $res = Xunsearch::search('count');
+//        $res = Xunsearch::clean();
+//        p($res);die;
         foreach ($articles as $article) {
-//            添加文档
-            $doc->setFields([
+            Xunsearch::add([
                 'id'=>$article->id,
                 'title'=>$article->title,
                 'keywords'=>$article->keywords,
                 'chrono'=>$cur_time,
             ]);
-//            提交到索引中
-            $index->add($doc);
         }
 
         return true;

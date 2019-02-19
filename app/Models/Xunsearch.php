@@ -8,12 +8,13 @@ class Xunsearch extends Model
 {
 
     protected $table = 'article';
+    public $timestamps = false;
     /**
      * 添加索引
      * @param $data
      * @return bool
      */
-    public function add($data)
+    public static function add($data)
     {
         $xs = new \XS('search');
         $index = $xs->index;
@@ -36,7 +37,7 @@ class Xunsearch extends Model
      * @param $data
      * @return bool
      */
-    public function updateIndex($data)
+    public static function updateIndex($data)
     {
         $xs = new \XS('search');
         $index = $xs->index;
@@ -59,7 +60,7 @@ class Xunsearch extends Model
      * @param $ids [1,2,3]
      * @return bool
      */
-    public function delIndex($ids)
+    public static function delIndex($ids)
     {
         if (!is_array($ids)) {
             $ids = (array)$ids;
@@ -76,13 +77,21 @@ class Xunsearch extends Model
      * 清空所有索引
      * @return bool
      */
-    public function clean()
+    public static function clean()
     {
         $xs = new \XS('search');
         $index = $xs->index;
         $index->clean();
 
         return true;
+    }
+
+    public static function search($name)
+    {
+        $xs = new \XS('search');
+        $data = $xs->search->search($name);
+
+        return $data;
     }
 
 
