@@ -5,7 +5,6 @@ namespace App\Console\Commands;
 use App\Models\Article;
 use App\Models\Xunsearch;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\DB;
 
 class addSearch extends Command
 {
