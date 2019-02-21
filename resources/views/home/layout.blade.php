@@ -25,6 +25,5 @@
 
 <!-- 底部 -->
 @include('home.partials.footer')
-
 </body>
 </html>

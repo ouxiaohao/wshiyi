@@ -1,4 +1,4 @@
-<header>
+<header id="header">
     <div>
         <div class="menu">
             <nav class="navbar navbar-default" role="navigation">
@@ -9,11 +9,9 @@
                     <div class="collapse navbar-collapse" id="example-navbar-collapse">
                         <ul class="nav navbar-nav">
                             <li class="index"><a href="{{ url('/') }}">首页</a></li>
-                            @foreach($categories as $category)
-                            <li class="{{ Request::is($category['title']) ? 'active' : '' }}">
-                                <a href="{{ url('/',['param'=>$category['title']]) }}">{{ $category['_name'] }}</a>
+                            <li :class="{'active': (nowCate==cate.id)}" v-for="cate in todos.categories">
+                                <a :href="'{{ url('cate') }}/' + cate.id ">@{{ cate._name }}</a>
                             </li>
-                            @endforeach
                             <li>
                                 <a href="https://github.com/wshiyi/wshiyi" target="_blank">源码</a>
                             </li>
@@ -23,13 +21,6 @@
             </nav>
         </div>
         <div class="search">
-            <script type="text/javascript">
-                function change_color(){
-                    myform = document.getElementById('myform');
-                    myform.search.style.color = 'black';
-                    myform.search.style.fontFamily = '微软雅黑';
-                }
-            </script>
             <form action="{{ url('search') }}" method="post" id="myform">
                 {{ csrf_field() }}
                 <input type="text" placeholder="Search" name="search"

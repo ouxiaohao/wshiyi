@@ -30,9 +30,13 @@ $(function(){
                 'margin-top':0
             })
         }
-    })
+    });
 
-
+    function change_color(){
+        myform = document.getElementById('myform');
+        myform.search.style.color = 'black';
+        myform.search.style.fontFamily = '微软雅黑';
+    }
 
 
 });

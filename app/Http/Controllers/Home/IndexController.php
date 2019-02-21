@@ -3,7 +3,6 @@ namespace App\Http\Controllers\Home;
 
 use App\Http\Controllers\Controller;
 use App\Models\Article;
-use App\Models\ArticleTag;
 use App\Models\Category;
 use App\Models\Data;
 use App\Models\Search;
@@ -20,64 +19,37 @@ class IndexController extends Controller
      */
     public function index($param = null)
     {
-        switch (true) {
-            // null时显示首页
-            case is_null($param):
-                $id = null;
-                $whereName = null;
-                $search = null;
-                break;
-            //为数组时即搜索
-            case is_array($param):
-                $search = $param['search'];
-                $id = null;
-                $whereName = null;
-                break;
-            //转整小等1000大于0显示标签文章
-            case (int)$param <= 1000 && (int)$param > 0:
-                $id = $param;
-                $whereName = 'tag_id';
-                $search = null;
-                break;
-            //为字符串显示分类文章
-            default:
-                $id = Category::where('title', $param)->value('id');
-                $whereName = 'cate_id';
-                $search = null;
-                break;
-        }
 
-//        获取分类模型
-        $categories = Category::orderBy('sort')
-            ->get()
-            ->toArray();
-        $categories = Data::tree($categories,'name');
-
-//        获取文章模型 (包括首页、分类、标签)
-        $articles = Article::join('category','article.cate_id','=','category.id')
-            ->join('article_tag','article.id','=','article_tag.article_id')
-            ->orderBy('article.created_at','desc')
-            ->where('article.release',1)
-            ->when($id ,function ($query) use($id,$whereName){
-                return $query->where($whereName,$id);
-            })
-            ->when($search,function ($query) use($search){
-                return $query->where('article.title', 'like' ,"%{$search}%");
-            })
-            ->select('article.id','article.title','article.digest','article.thumb','article.created_at',
-                'category.title as category_title','category.name as category_name'
-                )
-            ->groupBy('article.id')
-            ->paginate(8);
-//        追加文章的标签
-        foreach ($articles as $article) {
-            $article->tags = ArticleTag::join('tag','article_tag.tag_id','=','tag.id')
-            ->where('article_id',$article->id)
-            ->pluck('name','id');
-        }
+        $articles = Article::getArticleList();
 
         return view('home.index.index',[
-            'categories' => $categories,
+            'articles' => $articles,
+        ]);
+    }
+
+    public function cate($cate_id)
+    {
+        $map = [
+            ['article.release','=',1],
+            ['category.id','=',$cate_id]
+        ];
+        $articles = Article::getArticleList($map);
+
+        return view('home.index.index',[
+            'articles' => $articles,
+        ]);
+
+    }
+
+    public function tag($tag_id)
+    {
+        $map = [
+            ['article.release','=',1],
+            ['article_tag.tag_id','=',$tag_id]
+        ];
+        $articles = Article::getArticleList($map);
+
+        return view('home.index.index',[
             'articles' => $articles,
         ]);
     }
@@ -118,6 +90,21 @@ class IndexController extends Controller
         $data = [
             'tags'=>$tags,
             'hot_list'=>$hot_list,
+        ];
+
+        echo json_encode($data);
+    }
+
+    public function cate_list()
+    {
+//        获取分类模型
+        $categories = Category::orderBy('sort')
+            ->get()
+            ->toArray();
+        $categories = Data::tree($categories,'name');
+        $data = [
+            'categories'=>$categories,
+            'now_cate'=>'linux',
         ];
 
         echo json_encode($data);

@@ -4,7 +4,7 @@
         <img src="{{ asset('img/code.png') }}">
     </div>
     <div class="tag">
-        <a :href="'{{ url('/') }}/' + tag.id" v-for="tag in todos.tags" :class=" 'label label-' + tag.color" >@{{ tag.name }}</a>
+        <a :href="'{{ url('tag') }}/' + tag.id" v-for="tag in todos.tags" :class=" 'label label-' + tag.color" >@{{ tag.name }}</a>
     </div>
     <div class="intro">
         <ul class="intro-choose">
@@ -35,19 +35,4 @@
         })
 
     });
-
-
-    var url = "{{ url('home/sidebar') }}";
-    var vm = new Vue({
-        el: '#aside',
-        data: {
-            todos: []
-        },
-        mounted: function () {
-            axios.get(url).then(function (response) {
-                vm.todos = response.data;
-            });
-        }
-    });
-
 </script>

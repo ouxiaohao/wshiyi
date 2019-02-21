@@ -16,10 +16,15 @@
 Auth::routes();
 Route::get('admin', 'Admin\IndexController@index');
 
+
+
 //搜索
 Route::post('search','Home\IndexController@search');
 //访问首页
 Route::get('/{param?}', 'Home\IndexController@index');
+
+Route::get('cate/{cate_id?}', 'Home\IndexController@cate');
+Route::get('tag/{tag_id?}', 'Home\IndexController@tag');
 
 
 /**
@@ -27,6 +32,7 @@ Route::get('/{param?}', 'Home\IndexController@index');
  **/
 //侧边栏
 Route::get('home/sidebar', 'Home\IndexController@sidebar');
+Route::get('home/cate_list', 'Home\IndexController@cate_list');
 Route::get('home/article/index/{id}', 'Home\ArticleController@index');
 
 
