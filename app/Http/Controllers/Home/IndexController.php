@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Data;
 use App\Models\Search;
 use App\Models\Tag;
+use App\Models\Xunsearch;
 use Illuminate\Http\Request;
 
 class IndexController extends Controller
@@ -30,8 +31,8 @@ class IndexController extends Controller
     public function cate($cate_id)
     {
         $map = [
-            ['article.release','=',1],
-            ['category.id','=',$cate_id]
+            'name'=>'category.id',
+            'value'=>[$cate_id]
         ];
         $articles = Article::getArticleList($map);
 
@@ -44,8 +45,8 @@ class IndexController extends Controller
     public function tag($tag_id)
     {
         $map = [
-            ['article.release','=',1],
-            ['article_tag.tag_id','=',$tag_id]
+            'name'=>'article_tag.tag_id',
+            'value'=>[$tag_id]
         ];
         $articles = Article::getArticleList($map);
 
@@ -64,14 +65,27 @@ class IndexController extends Controller
         if ($request->isMethod('post'))
         {
 //            获取用户请求
-            $search = $request->all();
-//            存储到一次性session
-            $request->flash();
+            $search = $request->input('search');
 
-            return $this->index($search);
+//            搜索结果
+            $res = Xunsearch::search($search);
+            $arc_ids = [];
+            foreach ($res as $value) {
+                $arc_ids[] = $value->id;
+            }
+//            根据搜索结果查询数据
+            $map = [
+                'name'=>'article.id',
+                'value'=>$arc_ids
+            ];
+            $articles = Article::getArticleList($map);
+
+            return view('home.index.index',[
+                'articles' => $articles,
+            ]);
         }
-        return back();
 
+        return back();
     }
 
     public function sidebar()
