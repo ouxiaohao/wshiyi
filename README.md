@@ -9,9 +9,9 @@
 ## 集成
 - Bootstrap
 - Markdown
-- vue.js
-- xunsearch
+- Vue.js
+- Xunsearch
 - Upyun
-- redis
+- Redis
 
 author: ouhao@ouxiaohao.com
