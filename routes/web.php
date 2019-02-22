@@ -16,8 +16,6 @@
 Auth::routes();
 Route::get('admin', 'Admin\IndexController@index');
 
-Route::get('test', 'Home\TestController@index');
-
 
 //搜索
 Route::post('search','Home\IndexController@search');

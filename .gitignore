@@ -9,4 +9,3 @@ Homestead.yaml
 /public/runtime.php.
 storage/
 /pwd
-/app/Http/Controllers/Home/TestController.php
