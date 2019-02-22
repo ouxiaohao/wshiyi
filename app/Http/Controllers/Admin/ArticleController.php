@@ -7,6 +7,7 @@ use App\Models\ArticleTag;
 use App\Models\Category;
 use App\Models\Data;
 use App\Models\Tag;
+use App\Models\Xunsearch;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -62,6 +63,8 @@ class ArticleController extends AdminBaseController
 
 //        获取当前文章id
         $id = $active->id;
+//        添加讯搜
+        Xunsearch::add(['id'=>$id,'title'=>$articleData['title'],'keywords'=>$articleData['keywords']]);
 //        获取文章_标签模型的请求数据，转化为字符串
         $tagId = $request->input('tag_id');
         foreach ($tagId as $v)
@@ -124,7 +127,8 @@ class ArticleController extends AdminBaseController
         }
         $res = Article::where('id',$id)->update($article);
         if (!$res) return back()->withInput();
-
+//        修改讯搜
+        Xunsearch::updateIndex(['id'=>$id,'title'=>$article['title'],'keywords'=>$article['keywords']]);
 //        请求的标签数据
         $tagId = $request->input('tag_id');
 //        先删除当前文章的旧标签
