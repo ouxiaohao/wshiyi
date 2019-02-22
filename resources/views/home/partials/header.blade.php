@@ -7,7 +7,7 @@
                         <a class="navbar-brand" href="{{ url('/') }}">Wshiyi</a>
                     </div>
                     <div class="collapse navbar-collapse" id="example-navbar-collapse">
-                        <ul class="nav navbar-nav">
+                        <ul class="nav navbar-nav" v-cloak>
                             <li class="index"><a href="{{ url('/') }}">首页</a></li>
                             <li :class="{'active': (nowCate==cate.id)}" v-for="cate in todos.categories">
                                 <a :href="'{{ url('cate') }}/' + cate.id ">@{{ cate._name }}</a>

@@ -5,7 +5,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Article;
 use App\Models\Category;
 use App\Models\Data;
-use App\Models\Search;
 use App\Models\Tag;
 use App\Models\Xunsearch;
 use Illuminate\Http\Request;

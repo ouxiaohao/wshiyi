@@ -8,6 +8,9 @@ html {
 body {
   background: #C9E4F1;
 }
+[v-cloak] {
+  display: none;
+}
 header {
   background: -webkit-linear-gradient(#34AFD8, #10556D);
   height: 0.5rem;

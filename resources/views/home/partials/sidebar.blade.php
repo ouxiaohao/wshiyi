@@ -3,7 +3,7 @@
     <div class="image">
         <img src="{{ asset('img/code.png') }}">
     </div>
-    <div class="tag">
+    <div class="tag" v-cloak>
         <a :href="'{{ url('tag') }}/' + tag.id" v-for="tag in todos.tags" :class=" 'label label-' + tag.color" >@{{ tag.name }}</a>
     </div>
     <div class="intro">
@@ -11,7 +11,7 @@
             <li><a href="javascript:;">热门推荐</a></li>
             {{--<li><a href="javascript:;">点击排行</a></li>--}}
         </ul>
-        <div class="hot">
+        <div class="hot" v-cloak>
             <a v-for="hot in todos.hot_list" :href="'{{ url('/home/article/index') }}/' + hot.id" class="list-group-item">@{{ hot.title }}</a>
         </div>
         {{--<div class="top">--}}
