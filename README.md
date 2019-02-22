@@ -12,6 +12,6 @@
 - vue.js
 - xunsearch
 - Upyun
-
+- redis
 
 author: ouhao@ouxiaohao.com

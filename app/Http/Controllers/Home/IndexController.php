@@ -8,6 +8,7 @@ use App\Models\Data;
 use App\Models\Tag;
 use App\Models\Xunsearch;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class IndexController extends Controller
 {
@@ -89,36 +90,43 @@ class IndexController extends Controller
 
     public function sidebar()
     {
-//        标签
-        $tags = Tag::orderBy('sort')
-            ->select('id','name','color')
-            ->get();
-//        推荐文章
-        $hot_list = Article::orderBy('browse','desc')
-            ->where('release',1)
-            ->select('id','title')
-            ->limit(9)
-            ->get();
+        $data = Cache::remember('home:index:sidebar', 60,function () {
+//          标签
+            $tags = Tag::orderBy('sort')
+                ->select('id','name','color')
+                ->get();
+//          推荐文章
+            $hot_list = Article::orderBy('browse','desc')
+                ->where('release',1)
+                ->select('id','title')
+                ->limit(9)
+                ->get();
 
-        $data = [
-            'tags'=>$tags,
-            'hot_list'=>$hot_list,
-        ];
+            $data = [
+                'tags'=>$tags,
+                'hot_list'=>$hot_list,
+            ];
+
+            return $data;
+        });
 
         echo json_encode($data);
     }
 
     public function cate_list()
     {
+        $data = Cache::rememberForever('home:index:cate_list', function () {
 //        获取分类模型
-        $categories = Category::orderBy('sort')
-            ->get()
-            ->toArray();
-        $categories = Data::tree($categories,'name');
-        $data = [
-            'categories'=>$categories,
-            'now_cate'=>'linux',
-        ];
+            $categories = Category::orderBy('sort')
+                ->get()
+                ->toArray();
+            $categories = Data::tree($categories,'name');
+            $data = [
+                'categories'=>$categories,
+            ];
+
+            return $data;
+        });
 
         echo json_encode($data);
     }
